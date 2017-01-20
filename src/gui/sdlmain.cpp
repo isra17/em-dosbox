@@ -34,7 +34,7 @@
 #endif
 #ifdef EMSCRIPTEN
 #include <emscripten.h>
-#include <html5.h>
+#include <emscripten/html5.h>
 #endif
 
 #include "cross.h"
@@ -2475,7 +2475,7 @@ void Config_Add_SDL() {
 
 	Pbool = sdl_sec->Add_bool("fullscreen",Property::Changeable::Always,false);
 	Pbool->Set_help("Start dosbox directly in fullscreen. (Press ALT-Enter to go back)");
-     
+
 	Pbool = sdl_sec->Add_bool("vsync",Property::Changeable::Always,false);
 	Pbool->Set_help("Sync to Vblank IF supported by the output device and renderer (if relevant).\n"
 	                "It can reduce screen flickering, but it can also result in a slow DOSBox.");
