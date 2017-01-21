@@ -612,14 +612,14 @@ AS_IF([test "x$enable_emscripten" = "xyes"],[
   AS_IF([test "x$enable_sync" != "xno"], [AC_DEFINE([EMTERPRETER_SYNC],[1])])
   AS_IF([test "x$with_sdl2" != "xno"],[
     AS_IF([test "x$with_sdl2" = "xyes"],
-      [CXXFLAGS="$CXXFLAGS -s USE_SDL=2 -s USE_SDL_NET=2"],
+      [CXXFLAGS="$CXXFLAGS -s USE_SDL=2 -s USE_SDL_NET=2 -DSDL_DATA_ALIGNED"],
       [LIBS="$LIBS -L$with_sdl2/build/.libs/ -lSDL2 -lSDL2_net"
        CXXFLAGS="$CXXFLAGS -Wno-warn-absolute-paths -I$with_sdl2/include"
     ])
   ])
 ])
 
-CXXFLAGS="$CXXFLAGS -g3 --separate-asm"
+CXXFLAGS="$CXXFLAGS -g3"
 
 AC_CONFIG_FILES([
 Makefile

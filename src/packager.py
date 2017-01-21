@@ -125,6 +125,7 @@ def inject_files(f):
         print('Packaging file as bootable disk image.')
         cmdline = '\'-c\', \'mount a .\', \'-c\', \'boot a:' + EXECUTABLE + '\''
     f.write("Module['arguments'] = [ " + cmdline + " ];\n</script>\n")
+    #f.write("Module['arguments'] = [\'dir\'];\n</script>\n")
 
 try:
     outf = open(OUTPUT_HTML, 'w')
