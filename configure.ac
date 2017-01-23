@@ -619,7 +619,8 @@ AS_IF([test "x$enable_emscripten" = "xyes"],[
   ])
 ])
 
-CXXFLAGS="$CXXFLAGS -g3"
+#CXXFLAGS="$CXXFLAGS -g3"
+#CXXFLAGS="$CXXFLAGS -s SAFE_HEAP=1"
 
 AC_CONFIG_FILES([
 Makefile

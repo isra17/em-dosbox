@@ -58,7 +58,8 @@ bool isIpxConnected;
 IPaddress ipxServConnIp;			// IPAddress for client connection to server
 UDPsocket ipxClientSocket;
 int UDPChannel;						// Channel used by UDP connection
-Bit8u recvBuffer[IPXBUFFERSIZE];	// Incoming packet buffer
+volatile Bit32u recvBuffer32[IPXBUFFERSIZE/4];
+Bit8u *recvBuffer = (Bit8u*)recvBuffer32;
 
 static RealPt ipx_callback;
 
@@ -624,7 +625,8 @@ void DisconnectFromServer(bool unexpected) {
 }
 
 static void sendPacket(ECBClass* sendecb) {
-	Bit8u outbuffer[IPXBUFFERSIZE];
+	Bit32u outbuffer32[IPXBUFFERSIZE/4];
+	Bit8u *outbuffer = (Bit8u*)outbuffer32;
 	fragmentDescriptor tmpFrag;
 	Bit16u i, fragCount,t;
 	Bit16s packetsize;
